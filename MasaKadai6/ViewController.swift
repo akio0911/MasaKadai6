@@ -30,13 +30,16 @@ class ViewController: UIViewController {
         let point = Int(slider.value)
         guard let text = numberOfLabel.text else { return }
 
-        let alert = UIAlertController(title: "結果",
-                                      message: "はずれ!\nあなたの値： \(point)",
-                                      preferredStyle: .alert)
-
+        let firstLine: String
         if point == Int(text) {
-            alert.message = "あたり!\nあなたの値： \(point)"
+            firstLine = "あたり!"
+        } else {
+            firstLine = "はずれ!"
         }
+
+        let alert = UIAlertController(title: "結果",
+                                      message: "\(firstLine)\nあなたの値： \(point)",
+                                      preferredStyle: .alert)
 
         let continueButton = UIAlertAction(title: "再挑戦",
                                            style: .default) { _ in
